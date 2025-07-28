@@ -1,6 +1,6 @@
 // src/counter.js
 
-import { createElement, useState } from './arc.js';
+import { createElement, useState } from './lib/arc.js';
 
 export function Counter() {
   // Use the useState hook to manage the count

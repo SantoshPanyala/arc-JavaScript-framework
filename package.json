@@ -1,14 +1,30 @@
 {
-  "name": "arc-js-modern",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "@santosh459/arc-js",
+  "private": false,
+  "version": "1.0.0",
+  "description": "A lightweight JavaScript framework for building modern web applications.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/arc-js-modern.git"
+  },
+  "homepage": "https://github.com/your-username/arc-js-modern#readme",
+  "main": "./dist/arc.umd.js",
+  "module": "./dist/arc.es.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "dev": "npx vite",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
     "vite": "^7.0.4"
-  }
+  },
+  "keywords": [
+    "javascript",
+    "framework",
+    "ui",
+    "virtual-dom"
+  ]
 }

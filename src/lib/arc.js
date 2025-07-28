@@ -16,7 +16,7 @@ let hookIndex = 0;          // The index to keep track of which hook is being ca
  */
 export function createElement(type, props, ...children) {
     if (typeof type === 'function') {
-        return type(props);
+        return type({ ...props, children: children.flat() });
     }
     return { type, props: props || {}, children: children.flat() };
 }

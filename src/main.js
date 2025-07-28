@@ -1,13 +1,40 @@
 // src/main.js
 
-import { createElement, render } from './arc.js';
-import { Counter } from './counter.js';
+import { render, createElement } from './lib/arc.js';
+import { Router, Link } from './lib/router.js';
+import { TodoListApp } from './todo.js';
 
-// 1. Define the UI by calling the Counter component.
-const app = createElement(Counter);
+// --- Page Components ---
 
-// 2. Get the container element.
+function HomePage() {
+    return createElement('div', null,
+        createElement(Link, { to: '/about' }, 'Go to About Page'),
+        createElement('hr'),
+        createElement(TodoListApp) // Use the ToDo list component here
+    );
+}
+
+function AboutPage() {
+    return createElement('div', null,
+        createElement('h1', null, 'About Page'),
+        createElement(Link, { to: '/' }, 'Go back Home')
+    );
+}
+
+function NotFoundPage() {
+    return createElement('div', null,
+        createElement('h1', null, '404 - Not Found')
+    );
+}
+
+// --- Route Definitions ---
+const routes = [
+    { path: '/', component: HomePage },
+    { path: '/about', component: AboutPage },
+    { path: '*', component: NotFoundPage }
+];
+
+const App = () => createElement(Router, { routes });
+
 const container = document.getElementById('app');
-
-// 3. Render the UI.
-render(Counter, container);
+render(App, container);
