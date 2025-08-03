@@ -14,7 +14,7 @@ let effectsToRun = [];
 /**
  * Creates an object that describes an HTML element or a component (a Virtual DOM node).
  */
-export function createElement(type, props, ...children) {
+export function h(type, props, ...children) {
     if (typeof type === 'function') {
         return type({ ...props, children: children.flat() });
     }
@@ -30,7 +30,7 @@ export function useState(initialState) {
 
     const setState = (newState) => {
         hook.state = newState;
-        _reRender(); // Trigger a re-render when state changes.
+        _reRender(); // Trigger a re-render when the state changes.
     };
 
     hooks[hookIndex] = hook;
@@ -146,7 +146,7 @@ function diff(oldVTree, newVTree, parentNode, index = 0) {
 function _reRender() {
     hookIndex = 0;
     effectsToRun = []; // Reset the effects queue
-    const newVTree = createElement(rootComponent);
+    const newVTree = h(rootComponent);
 
     diff(currentVTree, newVTree, rootContainer, 0);
 

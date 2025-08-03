@@ -1,14 +1,14 @@
 // src/todo.js
 
-import { createElement, useState } from './lib/arc.js';
+import { h, useState } from './lib/arc.js';
 
 /**
  * A component for a single to-do item with a delete button.
  */
 function TodoItem(props) {
-    return createElement('li', null,
+    return h('li', null,
         props.text,
-        createElement('button', { class: 'delete-btn', onClick: props.onDelete }, 'Delete')
+        h('button', { class: 'delete-btn', onClick: props.onDelete }, 'Delete')
     );
 }
 
@@ -32,27 +32,27 @@ export function TodoListApp() {
         setTodos(newTodos);
     };
 
-    return createElement(
+    return h(
         'div',
         { class: 'todo-app' },
-        createElement('h1', null, 'My To-Do List'),
+        h('h1', null, 'My To-Do List'),
 
-        createElement(
+        h(
             'div',
             { class: 'add-todo' },
-            createElement('input', {
+            h('input', {
                 type: 'text',
                 value: inputValue,
                 onInput: (e) => setInputValue(e.target.value),
             }),
-            createElement('button', { onClick: handleAddTodo }, 'Add')
+            h('button', { onClick: handleAddTodo }, 'Add')
         ),
 
-        createElement(
+        h(
             'ul',
             null,
             ...todos.map((todoText, index) =>
-                createElement(TodoItem, {
+                h(TodoItem, {
                     text: todoText,
                     onDelete: () => handleDeleteTodo(index),
                 })
