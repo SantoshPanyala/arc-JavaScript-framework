@@ -1,13 +1,13 @@
 {
   "name": "@santosh459/arc-js",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A lightweight JavaScript framework for building modern web applications.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-username/arc-js-modern.git"
+    "url": "git+https://github.com/SantoshPanyala/arc-JavaScript-framework.git"
   },
-  "homepage": "https://github.com/your-username/arc-js-modern#readme",
+  "homepage": "https://github.com/SantoshPanyala/arc-JavaScript-framework.git",
   "main": "./dist/arc.umd.js",
   "module": "./dist/arc.es.js",
   "files": [
