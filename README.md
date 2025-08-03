@@ -4,7 +4,7 @@
 # Arc.js
 A lightweight and unified JavaScript framework for building modern web applications, designed for performance and simplicity.
 
----
+
 
 ## 🚀 Quick Start
 
@@ -68,3 +68,47 @@ Components in Arc.js are just JavaScript functions that return a UI blueprint cr
 ```javascript
 // A simple, stateless component
 const Welcome = (props) => h('h1', null, `Hello, ${props.name}`);
+````
+
+### State with `useState`
+
+The `useState` hook lets you add state to a component. It returns an array with the current state value and a function to update it. Calling the update function will automatically trigger a re-render of the component.
+`const [state, setState] = useState(initialValue);`
+
+### Side Effects with `useEffect`
+
+The `useEffect` hook lets you perform side effects, such as fetching data or adding event listeners. By providing an empty dependency array `[]`, the effect will run only once when the component first mounts.
+`useEffect(callback, dependencies);`
+
+-----
+
+## API Reference
+
+* `h(type, props, ...children)`
+
+    * Creates a virtual DOM node that describes an element. If `type` is a function, it will render it as a component.
+
+* `render(Component, container)`
+
+    * Renders a component into a DOM container and initializes the framework.
+
+* `useState(initialState)`
+
+    * A hook that adds local state to a component and returns `[state, setState]`.
+
+* `useEffect(callback, dependencies)`
+
+    * A hook for running side effects after a component renders.
+
+-----
+
+## Installation
+
+Add Arc.js to your project using npm:
+
+```bash
+npm install @santosh459/arc-js
+```
+
+```
+```
