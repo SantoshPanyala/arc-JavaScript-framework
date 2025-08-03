@@ -1,6 +1,3 @@
-<img width="100%" alt="Arc.js Poster" src="https://github.com/user-attachments/assets/a5756fbd-c4ec-4a9a-aaf4-da1ce17f16f5">
-
-
 # Arc.js 🚀
 
 A lightweight JavaScript framework for building modern, multi-page web applications, built from scratch to understand the core principles of frontend development.
