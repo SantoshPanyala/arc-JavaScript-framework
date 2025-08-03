@@ -7,7 +7,7 @@ let rootContainer = null;   // The real DOM node where the app is mounted.
 let currentVTree = null;    // The last rendered virtual DOM tree, for comparison.
 let hooks = [];             // An array to store the state of our hooks between renders.
 let hookIndex = 0;          // The index to keep track of which hook is being called.
-
+let effectsToRun = [];
 // --- Framework Functions ---
 // These are the public functions that users of our framework will interact with.
 
@@ -36,6 +36,19 @@ export function useState(initialState) {
     hooks[hookIndex] = hook;
     hookIndex++;
     return [hook.state, setState];
+}
+
+export function useEffect(callback, dependencies) {
+    const oldHook = hooks[hookIndex];
+    const hasChanged = oldHook ? dependencies.some((dep, i) => dep !== oldHook.dependencies[i]) : true;
+
+    if (hasChanged) {
+        // We will run this effect after the render
+        effectsToRun.push(callback);
+    }
+
+    hooks[hookIndex] = { dependencies }; // Store dependencies for the next render
+    hookIndex++;
 }
 
 /**
@@ -132,12 +145,15 @@ function diff(oldVTree, newVTree, parentNode, index = 0) {
  */
 function _reRender() {
     hookIndex = 0;
+    effectsToRun = []; // Reset the effects queue
     const newVTree = createElement(rootComponent);
 
-    // The initial diff call starts at index 0 on the root container
     diff(currentVTree, newVTree, rootContainer, 0);
 
     currentVTree = newVTree;
+
+    // After the DOM is updated, run all the queued effects
+    effectsToRun.forEach(effect => effect());
 }
 
 /**
