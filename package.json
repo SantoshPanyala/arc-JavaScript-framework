@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && copy src\\index.d.ts dist\\index.d.ts",
     "preview": "vite preview"
   },
   "devDependencies": {
